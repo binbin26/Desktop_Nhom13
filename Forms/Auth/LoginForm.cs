@@ -39,7 +39,6 @@ namespace Desktop_Nhom13.Forms.Auth
                     MessageBox.Show("Đăng nhập thành công!");
                     Logger.LogInfo($"Đăng nhập thành công với tài khoản: {username}");
 
-                    // Navigate based on role
                     Form nextForm = null;
                     switch (role)
                     {
