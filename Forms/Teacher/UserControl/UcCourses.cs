@@ -4,6 +4,9 @@ using System.Drawing;
 using System.Windows.Forms;
 using Desktop_Nhom13.DAL;
 using Desktop_Nhom13.Models.Courses;
+using Desktop_Nhom13.DAL;
+using Desktop_Nhom13.Forms.Teacher;
+using Desktop_Nhom13.Models.Courses;
 
 namespace Desktop_Nhom13.Forms.Teacher
 {
@@ -113,10 +116,10 @@ namespace Desktop_Nhom13.Forms.Teacher
                 var detail = new UcCourseDetail(selectedCourse);
 
                 // Sửa tại đây:
-                //if (this.FindForm() is TeacherForm parentForm)
-                //{
-                //    parentForm.LoadControl(detail); // ← Dùng phương thức chuẩn
-                //}
+                if (this.FindForm() is TeacherForm parentForm)
+                {
+                    parentForm.LoadControl(detail); // ← Dùng phương thức chuẩn
+                }
             }
         }
     }

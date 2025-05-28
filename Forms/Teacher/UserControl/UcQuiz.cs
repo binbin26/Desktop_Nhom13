@@ -2,6 +2,10 @@
 using Desktop_Nhom13.DAL;
 using Desktop_Nhom13.Models.Assignments;
 using Desktop_Nhom13.Models.Courses;
+using Desktop_Nhom13.BLL;
+using Desktop_Nhom13.Forms.Teacher;
+using Desktop_Nhom13.Models.Assignments;
+using Desktop_Nhom13.Models.Courses;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -155,8 +159,8 @@ namespace Desktop_Nhom13.Forms.Teacher.Usercontrol
             var selectedCourse = ShowCourseSelectionDialog(courses);
             if (selectedCourse != null)
             {
-                //MultipleChoiceProgress progressForm = new MultipleChoiceProgress(selectedCourse.CourseID, TeacherID);
-                //progressForm.Show();
+                MultipleChoiceProgress progressForm = new MultipleChoiceProgress(selectedCourse.CourseID, TeacherID);
+                progressForm.Show();
             }
         }
     }

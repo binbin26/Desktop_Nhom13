@@ -2,6 +2,7 @@
 using System.Drawing;
 using System;
 using FontAwesome.Sharp;
+using Desktop_Nhom13.Forms.Teacher;
 
 namespace Desktop_Nhom13.Forms.Teacher
 {
@@ -81,7 +82,7 @@ namespace Desktop_Nhom13.Forms.Teacher
             btnCourseProgress.Cursor = Cursors.Hand;
             btnCourseProgress.Click += (s, e) =>
             {
-          //     new CourseProgress(currentCourse.CourseID, currentCourse.CourseName).ShowDialog();
+                new CourseProgress(currentCourse.CourseID, currentCourse.CourseName).ShowDialog();
             };
 
             // panelButtons

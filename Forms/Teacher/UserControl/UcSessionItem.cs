@@ -6,6 +6,8 @@ using System.IO;
 using System.Windows.Forms;
 using Desktop_Nhom13.DAL;
 using Desktop_Nhom13.Models.Assignments;
+using Desktop_Nhom13.DAL;
+using Desktop_Nhom13.Forms.Teacher;
 using FontAwesome.Sharp;
 using Microsoft.VisualBasic;
 
@@ -45,9 +47,9 @@ namespace Desktop_Nhom13.Forms.Teacher
 
         private void btnCreateAssignment_Click(object sender, EventArgs e)
         {
-            //FormChooseAssignmentType choose = new FormChooseAssignmentType(TeacherID, CourseID, SessionID);
-            //choose.FormClosed += (s, args) => LoadAssignments();
-            //choose.ShowDialog();
+            FormChooseAssignmentType choose = new FormChooseAssignmentType(TeacherID, CourseID, SessionID);
+            choose.FormClosed += (s, args) => LoadAssignments();
+            choose.ShowDialog();
         }
 
         private void StyleModernButton(Button button, Color backColor)
@@ -201,38 +203,38 @@ namespace Desktop_Nhom13.Forms.Teacher
                         var lbl = CreateItemLabel(title, IconChar.ClipboardList);
                         lbl.Click += (s, e) =>
                         {
-                            //bool isMultipleChoice = CheckIfAssignmentIsMultipleChoice(assignmentId);
-                            //if (isMultipleChoice)
-                            //{
-                            //    new FormViewQuestions(LoadQuestionsFromDatabase(assignmentId)).ShowDialog();
-                            //}
-                            //else
-                            //{
-                            //    // Thay thế bằng mở file PDF/docx đã đính kèm
-                            //    string filePath = GetEssayFilePath(assignmentId);
-                            //    string fullPath = Path.Combine(Application.StartupPath, filePath);
-                            //    if (File.Exists(fullPath))
-                            //        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(fullPath) { UseShellExecute = true });
-                            //    else
-                            //        MessageBox.Show("Không tìm thấy file bài tập tự luận.");
-                            //}
+                            bool isMultipleChoice = CheckIfAssignmentIsMultipleChoice(assignmentId);
+                            if (isMultipleChoice)
+                            {
+                                new FormViewQuestions(LoadQuestionsFromDatabase(assignmentId)).ShowDialog();
+                            }
+                            else
+                            {
+                                // Thay thế bằng mở file PDF/docx đã đính kèm
+                                string filePath = GetEssayFilePath(assignmentId);
+                                string fullPath = Path.Combine(Application.StartupPath, filePath);
+                                if (File.Exists(fullPath))
+                                    System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(fullPath) { UseShellExecute = true });
+                                else
+                                    MessageBox.Show("Không tìm thấy file bài tập tự luận.");
+                            }
                         };
 
                         var btnRename = CreateItemButton("Đổi tên", () =>
                         {
-                            //var f = new FormRenameAssignment(title);
-                            //if (f.ShowDialog() == DialogResult.OK)
-                            //{
-                            //    using (var c = DatabaseHelper.GetConnection())
-                            //    {
-                            //        c.Open();
-                            //        var cmdu = new SqlCommand("UPDATE Assignments SET Title = @Title WHERE AssignmentID = @ID", c);
-                            //        cmdu.Parameters.AddWithValue("@Title", f.NewName);
-                            //        cmdu.Parameters.AddWithValue("@ID", assignmentId);
-                            //        cmdu.ExecuteNonQuery();
-                            //    }
-                            //    LoadAssignments();
-                            //}
+                            var f = new FormRenameAssignment(title);
+                            if (f.ShowDialog() == DialogResult.OK)
+                            {
+                                using (var c = DatabaseHelper.GetConnection())
+                                {
+                                    c.Open();
+                                    var cmdu = new SqlCommand("UPDATE Assignments SET Title = @Title WHERE AssignmentID = @ID", c);
+                                    cmdu.Parameters.AddWithValue("@Title", f.NewName);
+                                    cmdu.Parameters.AddWithValue("@ID", assignmentId);
+                                    cmdu.ExecuteNonQuery();
+                                }
+                                LoadAssignments();
+                            }
                         });
 
                         var btnDel = CreateItemButton("Xóa", () =>
@@ -343,26 +345,26 @@ namespace Desktop_Nhom13.Forms.Teacher
         }
         private void btnEditTitle_Click(object sender, EventArgs e)
         {
-            //var form = new FormRenameSession(this.Title);
-            //if (form.ShowDialog() == DialogResult.OK)
-            //{
-            //    string newTitle = form.NewTitle;
-            //    if (newTitle != this.Title)
-            //    {
-            //        using (var conn = DAL.DatabaseHelper.GetConnection())
-            //        using (var cmd = new SqlCommand("UPDATE Sessions SET Title = @Title WHERE SessionID = @ID", conn))
-            //        {
-            //            cmd.Parameters.AddWithValue("@Title", newTitle);
-            //            cmd.Parameters.AddWithValue("@ID", SessionID);
-            //            conn.Open();
-            //            cmd.ExecuteNonQuery();
-            //        }
+            var form = new FormRenameSession(this.Title);
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                string newTitle = form.NewTitle;
+                if (newTitle != this.Title)
+                {
+                    using (var conn = DAL.DatabaseHelper.GetConnection())
+                    using (var cmd = new SqlCommand("UPDATE Sessions SET Title = @Title WHERE SessionID = @ID", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@Title", newTitle);
+                        cmd.Parameters.AddWithValue("@ID", SessionID);
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
 
-            //        this.Title = newTitle;
-            //        lblSessionTitle.Text = newTitle;
-            //        MessageBox.Show("Đã cập nhật tiêu đề buổi học.");
-            //    }
-            //}
+                    this.Title = newTitle;
+                    lblSessionTitle.Text = newTitle;
+                    MessageBox.Show("Đã cập nhật tiêu đề buổi học.");
+                }
+            }
         }
 
         private List<Question> LoadQuestionsFromDatabase(int assignmentId)
