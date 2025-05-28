@@ -424,6 +424,9 @@
     <EmbeddedResource Include="Forms\Auth\RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Student\frmTongQuan.resx">
+      <DependentUpon>frmTongQuan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Student\TaiLieu.resx">
       <DependentUpon>TaiLieu.cs</DependentUpon>
     </EmbeddedResource>
