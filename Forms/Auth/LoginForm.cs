@@ -1,6 +1,6 @@
 ﻿using Desktop_Nhom13.Forms.Admin;
 using Desktop_Nhom13.Forms.Student;
-//using Desktop_Nhom13.Forms.Teacher;
+using Desktop_Nhom13.Forms.Teacher;
 using Desktop_Nhom13;
 using Desktop_Nhom13.BLL;
 using Desktop_Nhom13.Models.Users;
@@ -47,9 +47,9 @@ namespace Desktop_Nhom13.Forms.Auth
                         case "Admin":
                             nextForm = new AdminForm();
                             break;
-                        //case "Teacher":
-                        //    nextForm = new TeacherForm(userId);
-                        //    break;
+                        case "Teacher":
+                            nextForm = new TeacherForm(userId);
+                            break;
                         case "Student":
                             nextForm = new frmTongQuan(userId, username);
                             break;
