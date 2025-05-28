@@ -24,7 +24,7 @@
 
 * Hệ điều hành: Windows 10 trở lên
 * Visual Studio 2019 hoặc mới hơn
-* SQL Server 2017 hoặc mới hơn
+* SQL Server 2022 hoặc mới hơn
 
 ### Các bước cài đặt
 
@@ -36,9 +36,10 @@
 2. Mở file `Desktop_Nhom13.sln` bằng Visual Studio.
 3. Khôi phục các gói NuGet nếu cần.
 4. Cấu hình chuỗi kết nối cơ sở dữ liệu trong `App.config`.
-5. Nhấp chuột phải vào Databases và chọn Import Data-tier Application file 'EduMasterDB.bacpac' để nhập cơ sở dữ liệu.
+5. Nhấp chuột phải vào Databases và chọn Import Data-tier Application file 'EduMasterDB.bacpac' để import cơ sở dữ liệu.
 6. Chạy ứng dụng bằng cách nhấn F5 hoặc chọn "Start" trong Visual Studio.([GitHub][3])
-7.Chọn 1 trong các tài khoản ở `SQLQuery1.sql` để đăng nhập hoặc đăng ký.
+7. Thêm Severname SQL Server của bạn vào file App.Config. Cẩn trọng hơn bạn hãy thêm ServerName của mình vào file theo đường dẫn sau: bin/Debug/Desktop_Nhom13.exe.Config
+8.Chọn 1 trong các tài khoản ở `EduMasterDB` để đăng nhập hoặc đăng ký.
 ## 📁 Cấu trúc thư mục
 
 * `DAL/`: Lớp truy cập dữ liệu.
