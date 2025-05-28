@@ -364,7 +364,7 @@ namespace Desktop_Nhom13.DAL
             FROM CourseDocuments cd
             INNER JOIN Sessions s ON cd.SessionID = s.SessionID
             WHERE cd.CourseID = @CourseID
-            ORDER BY s.CreatedAt, s.Titl";
+            ORDER BY s.CreatedAt, s.Title";
 
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@CourseID", courseId);
