@@ -31,9 +31,9 @@
 1. Clone repository về máy:([GitHub][2])
 
    ```bash
-   git clone https://github.com/binbin26/CNPM.git
+[   git clone https://github.com/binbin26/CNPM.git](https://github.com/binbin26/Desktop_Nhom13.git)
    ```
-2. Mở file `CNPM.sln` bằng Visual Studio.
+2. Mở file `Desktop_Nhom13.sln` bằng Visual Studio.
 3. Khôi phục các gói NuGet nếu cần.
 4. Cấu hình chuỗi kết nối cơ sở dữ liệu trong `App.config`.
 5. Nhấp chuột phải vào Databases và chọn Import Data-tier Application file 'EduMasterDB.bacpac' để nhập cơ sở dữ liệu.
