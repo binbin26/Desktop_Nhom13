@@ -29,10 +29,10 @@
 ### Các bước cài đặt
 
 1. Clone repository về máy:([GitHub][2])
-
-   ```bash
+```bash
 [   git clone https://github.com/binbin26/CNPM.git](https://github.com/binbin26/Desktop_Nhom13.git)
    ```
+   
 2. Mở file `Desktop_Nhom13.sln` bằng Visual Studio.
 3. Khôi phục các gói NuGet nếu cần.
 4. Cấu hình chuỗi kết nối cơ sở dữ liệu trong `App.config`.
